@@ -17,4 +17,4 @@ social:
     link: https://linkedin.com
 ---
 
-lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr navigation et dolore magna aliqua.
+Somos un pequeño estudio independiente apasionado por el diseño web y el mundo felino. CatGallery nace de mi curiosidad por capturar esos momentos únicos de los gatos y compartirlos con la comunidad, creando experiencias ligeras, rápidas y llenas de ternura.

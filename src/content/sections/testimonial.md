@@ -1,27 +1,27 @@
 ---
 enable: true
-title: "What Users Are Saying About Nextplate"
-description: "Don't just take our word for it - hear from some of our satisfied users!  Check out some of our testimonials below to see what others are saying about Nextplate."
+title: "💬 Testimonios"
+description: "Lo que dicen nuestros usuarios"
 
 # Testimonials
 testimonials:
   - name: "Marvin McKinney"
     designation: "Web Designer"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "CatGallery es mi sitio favorito cada mañana: mi dosis de ternura antes de empezar el día. 🐾"
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Laura Méndez"
+    designation: "Medic"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Las fotos son preciosas y cargan rapidísimo, ¡incluso en el móvil!"
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "Sofía García"
+    designation: "Mother"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "Me encanta navegar por CatGallery cada vez que necesito relajarme. ¡Estos gatitos son irresistibles!"
 
-  - name: "Marvin McKinney"
-    designation: "Web Designer"
+  - name: "David"
+    designation: "Boss"
     avatar: "/images/avatar-sm.png"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui iusto illo molestias, assumenda expedita commodi inventore non itaque molestiae voluptatum dolore, facilis sapiente, repellat veniam."
+    content: "La calidad de las fotos es excelente y la web carga rapidísimo. ¡Un diez para el equipo!"
 ---

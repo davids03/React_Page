@@ -11,32 +11,10 @@
     {
       "name": "Personajes",
       "url": "/characters"
-    },
-    {
-      "name": "Pages",
-      "url": "",
-      "hasChildren": true,
-      "children": [
-        {
-          "name": "Categories",
-          "url": "/categories"
-        },
-        {
-          "name": "Tags",
-          "url": "/tags"
-        },
-        {
-          "name": "404 Page",
-          "url": "/404"
-        }
-      ]
     }
+    
   ],
   "footer": [
-    {
-      "name": "Elements",
-      "url": "/elements"
-    },
     {
       "name": "Privacy Policy",
       "url": "/privacy-policy"

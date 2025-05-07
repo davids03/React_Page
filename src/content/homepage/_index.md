@@ -1,10 +1,8 @@
 ---
 # Banner
 banner:
-  title: "Bienvenidos"
-  content: "Tu lugar favorito para los amantes de los gatos.
-Descubre productos, consejos y curiosidades sobre el mundo felino.
-Diseño minimalista. Amor infinito por los gatos."
+  title: "¡Bienvenidos a CatGallery!"
+  content: "En CatGallery hemos creado un espacio dedicado a los amantes de los gatos. Aquí encontrarás una selección única de adorables felinos, cada uno con su propia personalidad y encanto. Navega por nuestra galería y descubre caras curiosas, poses juguetonas y miradas entrañables que te robarán el corazón."
   image: "/images/banner.png"
   button:
     enable: true
@@ -13,41 +11,38 @@ Diseño minimalista. Amor infinito por los gatos."
 
 # Features
 features:
-  - title: "What's Included in Nextplate"
+  - title: "What's Included in CatGallery"
     image: "/images/service-1.png"
-    content: "Nextplate is a comprehensive starter template that includes everything you need to get started with your Next project. What's Included in Nextplate"
+    content: "Características destacadas (lista breve)"
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Next and TailwindCSS for easy and customizable styling"
-      - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
+      - "📸 Imágenes de alta calidad: Cada foto está optimizada para ofrecer la máxima nitidez y detalle."
+      - "🐾 Actualizaciones diarias: Nuevos gatitos cada día, para que nunca te quedes sin dosis de ternura."
+      - "🚀 Rápido y ligero: Nuestra galería está diseñada para cargar al instante, en móviles y escritorio."
     button:
       enable: false
       label: "Get Started Now"
       link: "#"
 
-  - title: "Discover the Key Features Of Next"
+  - title: "🐱 Sobre Nosotros"
     image: "/images/service-2.png"
-    content: "Next is an all-in-one web framework for building fast, content-focused websites. It offers a range of exciting features for developers and website creators. Some of the key features are:"
+    content: "CatGallery nació de la pasión por esos pequeños grandes compañeros que alegran nuestros días con sus travesuras. Somos un equipo de amantes de los gatos que creemos que cada felino merece un espacio donde brillar. Con cariño y dedicación, curamos para ti una selección de fotografías únicas, tomadas por fotógrafos que conocen la magia de esa mirada curiosa y el ronroneo tranquilizador."
     bulletpoints:
-      - "Zero JS, by default: No JavaScript runtime overhead to slow you down."
-      - "Customizable: Tailwind, MDX, and 100+ other integrations to choose from."
-      - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
+      - "Tu dosis diaria de ternura felina"
     button:
-      enable: true
+      enable: false
       label: "Get Started Now"
       link: "https://github.com/zeon-studio/nextplate"
 
-  - title: "The Top Reasons to Choose Next for Your Next Project"
+  - title: "🌟 Características"
     image: "/images/service-3.png"
-    content: "With Next, you can build modern and content-focused websites without sacrificing performance or ease of use."
+    content: "¿Por qué CatGallery?"
     bulletpoints:
-      - "Instantly load static sites for better user experience and SEO."
-      - "Intuitive syntax and support for popular frameworks make learning and using Next a breeze."
-      - "Use any front-end library or framework, or build custom components, for any project size."
-      - "Built on cutting-edge technology to keep your projects up-to-date with the latest web standards."
+      - "Variedad sin igual
+Desde gatitos juguetones hasta felinos mayores, tenemos un abanico de personalidades y razas para todos los gustos."
+      - "Alta velocidad de carga
+Imágenes optimizadas y un diseño ligero garantizan una experiencia fluida, incluso en conexiones lentas."
+      - "Responsive & accesible
+Nuestro diseño se adapta a cualquier dispositivo y cumple con los estándares de accesibilidad para todos los públicos."
     button:
       enable: false
       label: ""
