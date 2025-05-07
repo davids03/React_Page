@@ -6,16 +6,16 @@ import config from "@/config/config.json";
 import menu from "@/config/menu.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
 
-//  child navigation link interface
+// Interfaces
 export interface IChildNavigationLink {
   name: string;
   url: string;
 }
 
-// navigation link interface
 export interface INavigationLink {
   name: string;
   url: string;
@@ -24,45 +24,45 @@ export interface INavigationLink {
 }
 
 const Header = () => {
-  // distructuring the main menu from menu object
   const { main }: { main: INavigationLink[] } = menu;
-  const { navigation_button, settings } = config;
-  // get current path
+  const { settings } = config;
   const pathname = usePathname();
 
-  // scroll to top on route change
+  const [isClient, setIsClient] = useState(false);
+  const [username, setUsername] = useState<string | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
   useEffect(() => {
-    window.scroll(0, 0);
+    setIsClient(true);
+    const storedName = localStorage.getItem("username");
+    setUsername(storedName);
   }, [pathname]);
 
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    setUsername(null);
+    setDropdownOpen(false);
+  };
+
   return (
-    <header
-      className={`header z-30 ${settings.sticky_header && "sticky top-0"}`}
-    >
+    <header className={`header z-30 ${settings.sticky_header && "sticky top-0"}`}>
       <nav className="navbar container">
-        {/* logo */}
+        {/* Logo */}
         <div className="order-0">
           <Logo />
         </div>
-        {/* navbar toggler */}
+
+        {/* Navbar Toggler */}
         <input id="nav-toggle" type="checkbox" className="hidden" />
         <label
           htmlFor="nav-toggle"
           className="order-3 cursor-pointer flex items-center lg:hidden text-text-dark dark:text-white lg:order-1"
         >
-          <svg
-            id="show-button"
-            className="h-6 fill-current block"
-            viewBox="0 0 20 20"
-          >
+          <svg id="show-button" className="h-6 fill-current block" viewBox="0 0 20 20">
             <title>Menu Open</title>
             <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
           </svg>
-          <svg
-            id="hide-button"
-            className="h-6 fill-current hidden"
-            viewBox="0 0 20 20"
-          >
+          <svg id="hide-button" className="h-6 fill-current hidden" viewBox="0 0 20 20">
             <title>Menu Close</title>
             <polygon
               points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
@@ -70,8 +70,8 @@ const Header = () => {
             ></polygon>
           </svg>
         </label>
-        {/* /navbar toggler */}
 
+        {/* Menu Items */}
         <ul
           id="nav-menu"
           className="navbar-nav order-3 hidden w-full pb-6 lg:order-1 lg:flex lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8"
@@ -83,9 +83,7 @@ const Header = () => {
                   <span
                     className={`nav-link inline-flex items-center ${
                       menu.children?.map(({ url }) => url).includes(pathname) ||
-                      menu.children
-                        ?.map(({ url }) => `${url}/`)
-                        .includes(pathname)
+                      menu.children?.map(({ url }) => `${url}/`).includes(pathname)
                         ? "active"
                         : ""
                     }`}
@@ -96,14 +94,12 @@ const Header = () => {
                     </svg>
                   </span>
                   <ul className="nav-dropdown-list hidden group-hover:block lg:invisible lg:absolute lg:block lg:opacity-0 lg:group-hover:visible lg:group-hover:opacity-100">
-                    {menu.children?.map((child, i) => (
-                      <li className="nav-dropdown-item" key={`children-${i}`}>
+                    {menu.children?.map((child, j) => (
+                      <li className="nav-dropdown-item" key={`children-${j}`}>
                         <Link
                           href={child.url}
                           className={`nav-dropdown-link block ${
-                            (pathname === `${child.url}/` ||
-                              pathname === child.url) &&
-                            "active"
+                            (pathname === `${child.url}/` || pathname === child.url) && "active"
                           }`}
                         >
                           {child.name}
@@ -117,8 +113,7 @@ const Header = () => {
                   <Link
                     href={menu.url}
                     className={`nav-link block ${
-                      (pathname === `${menu.url}/` || pathname === menu.url) &&
-                      "active"
+                      (pathname === `${menu.url}/` || pathname === menu.url) && "active"
                     }`}
                   >
                     {menu.name}
@@ -127,17 +122,9 @@ const Header = () => {
               )}
             </React.Fragment>
           ))}
-          {navigation_button.enable && (
-            <li className="mt-4 inline-block lg:hidden">
-              <Link
-                className="btn btn-outline-primary btn-sm"
-                href={navigation_button.link}
-              >
-                {navigation_button.label}
-              </Link>
-            </li>
-          )}
         </ul>
+
+        {/* Right-side Controls */}
         <div className="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
           {settings.search && (
             <button
@@ -149,13 +136,33 @@ const Header = () => {
             </button>
           )}
           <ThemeSwitcher className="mr-5" />
-          {navigation_button.enable && (
-            <Link
-              className="btn btn-outline-primary btn-sm hidden lg:inline-block"
-              href={navigation_button.link}
-            >
-              {navigation_button.label}
-            </Link>
+
+          {/* Usuario logueado o botón de login */}
+          {isClient && (
+            username ? (
+              <div className="relative">
+                <button
+                  className="flex items-center gap-2 font-semibold text-sm text-gray-800 dark:text-white"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                >
+                  <FaUser /> {username}
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded shadow">
+                    <button
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700"
+                      onClick={handleLogout}
+                    >
+                      Cerrar sesión
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link href="/login" className="btn btn-sm btn-primary">
+                Iniciar sesión
+              </Link>
+            )
           )}
         </div>
       </nav>

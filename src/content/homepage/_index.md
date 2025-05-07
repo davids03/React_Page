@@ -1,13 +1,15 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Next Project"
-  content: "Nextplate is a free starter template built with Next and TailwindCSS, providing everything you need to jumpstart your Next project and save valuable time."
+  title: "Bienvenidos"
+  content: "Tu lugar favorito para los amantes de los gatos.
+Descubre productos, consejos y curiosidades sobre el mundo felino.
+Diseño minimalista. Amor infinito por los gatos."
   image: "/images/banner.png"
   button:
     enable: true
-    label: "Get Started For Free"
-    link: "https://github.com/zeon-studio/nextplate"
+    label: "Github del projecto"
+    link: "https://github.com/davids03/React_Page"
 
 # Features
 features:
