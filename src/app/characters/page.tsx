@@ -2,37 +2,40 @@
 export const dynamic = 'force-dynamic';
 
 import Image from "next/image";
-import config from "../../config/config.json";
+
+type Cat = { id: string; url: string };
 
 export default async function CharactersPage() {
-  const isProd = process.env.NODE_ENV === "production";
-  const host = isProd
-    ? `https://${process.env.VERCEL_URL}`
-    : "http://localhost:3000";
+  let cats: Cat[] = [];
 
-  const basePath = config.site.base_path !== "/" ? config.site.base_path : "";
-  const apiUrl = `${host}${basePath}/api/characters`;
-
-  const res = await fetch(apiUrl, {
-    next: { revalidate: 0 }
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch characters: ${res.status}`);
+  try {
+    const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=12", {
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error(`Cat API responded ${res.status}`);
+    cats = await res.json();
+  } catch (error) {
+    console.error("Error fetching cats:", error);
+    return (
+      <main className="p-6 text-center text-red-600">
+        <h1>Error loading cats</h1>
+        <p>Vuelve a intentarlo más tarde.</p>
+      </main>
+    );
   }
-  const characters: Array<{ id: number; name: string; image: string }> = await res.json();
 
   return (
     <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-      {characters.map((char) => (
-        <div key={char.id} className="text-center">
+      {cats.map((cat) => (
+        <div key={cat.id} className="text-center">
           <Image
-            src={char.image}
-            alt={char.name}
-            width={200}
-            height={200}
+            src={cat.url}
+            alt={`Cat ${cat.id}`}
+            width={250}
+            height={250}
             className="mx-auto rounded-lg shadow"
           />
-          <h2 className="mt-2 text-lg font-semibold">{char.name}</h2>
+          <h2 className="mt-2 text-lg font-semibold">Cat #{cat.id}</h2>
         </div>
       ))}
     </main>
