@@ -1,26 +1,35 @@
 // src/app/characters/page.tsx
-export const dynamic = 'force-dynamic';
+"use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type Cat = { id: string; url: string };
 
-export default async function CharactersPage() {
-  let cats: Cat[] = [];
+export default function CharactersPage() {
+  const [cats, setCats] = useState<Cat[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  try {
-    const res = await fetch("https://api.thecatapi.com/v1/images/search?limit=12", {
-      cache: 'no-store'
-    });
-    if (!res.ok) throw new Error(`Cat API responded ${res.status}`);
-    cats = await res.json();
-  } catch (error) {
-    console.error("Error fetching cats:", error);
+  useEffect(() => {
+    fetch("https://api.thecatapi.com/v1/images/search?limit=12")
+      .then((res) => {
+        if (!res.ok) throw new Error(`Status ${res.status}`);
+        return res.json();
+      })
+      .then((data: Cat[]) => setCats(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <p className="p-6 text-center">Cargando gatos… 🐱</p>;
+  }
+  if (error) {
     return (
-      <main className="p-6 text-center text-red-600">
-        <h1>Error loading cats</h1>
-        <p>Vuelve a intentarlo más tarde.</p>
-      </main>
+      <p className="p-6 text-center text-red-600">
+        Error al cargar gatos: {error}
+      </p>
     );
   }
 
